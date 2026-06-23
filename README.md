@@ -1,6 +1,6 @@
 # 16通道200MHz逻辑分析仪 (CH32H417WEU6移植版)
 
-![逻辑分析仪效果图](https://i.imgur.com/gLIiwBf.png)
+![逻辑分析仪效果图](https://i.imgur.com/bj86NZk.png)
 
 本工程是基于[立创开源平台原项目](https://oshwhub.com/q2h2/project_bszkxrnf)的移植版本。核心变动为：**将主控芯片从CH32H417QEU6 (QFN-128) 更换为CH32H417WEU6 (QFN-68)**，并据此修改了原理图、重绘了PCB，调整了部分引脚分配。
 
