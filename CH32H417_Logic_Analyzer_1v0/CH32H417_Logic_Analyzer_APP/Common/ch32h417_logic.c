@@ -187,7 +187,7 @@ void Dac_Init(void)
     DAC_InitType.DAC_OutputBuffer = DAC_OutputBuffer_Enable;
     DAC_Init(DAC_Channel_2, &DAC_InitType);
     DAC_Cmd(DAC_Channel_2, ENABLE);
-    DAC_SetChannel1Data(DAC_Align_12b_R, 34);    // Default output 0, voltage 3.3V
+    DAC_SetChannel2Data(DAC_Align_12b_R, 34);    // Default output 0, voltage 3.3V
 }
 
 /*********************************************************************
@@ -199,7 +199,7 @@ void Dac_Init(void)
  */
 void DAC_OUT(uint16_t dac_value)
 {
-    DAC_SetChannel1Data(DAC_Align_12b_R, dac_value);
+    DAC_SetChannel2Data(DAC_Align_12b_R, dac_value);
 }
 
 /*********************************************************************
@@ -272,6 +272,8 @@ void HSADC_Function_Init(void)
  */
 void HSADC_Function_Start(void)
 {
+    DAC_SetChannel2Data(DAC_Align_12b_R, 34);    // Default output 0, voltage 3.3V
+    Delay_Ms(10);
     UHSIF_Clock_Set(RCC_PLLMUL16);    // Configure system PLL clock, 400M system clock 26-05-09
     HSADC_Function_Init();
     HSADC_Cmd(ENABLE);
@@ -297,6 +299,7 @@ void HSADC_Function_Stop(void)
     RCC_HB2PeriphResetCmd(RCC_HB2Periph_HSADC, ENABLE);
     Delay_Ms(10);
     RCC_HB2PeriphResetCmd(RCC_HB2Periph_HSADC, DISABLE);
+    DAC_OUT(logic_adc_info.logic_level);    // Restore DAC output voltage
 }
 
 /*********************************************************************
