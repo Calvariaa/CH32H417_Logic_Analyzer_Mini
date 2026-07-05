@@ -27,7 +27,7 @@ void UHSIF_Init(void)
     UHSIF_Para_Init();
 
     /* For the UHSIF pin initialization, the host needs to configure the frequency division coefficient */
-    UHSIF_GPIO_Init(DEF_UHSIF_SLAVE_FPGA_MODE, DEF_UHSIF_PINREMAP2, DEF_UHSIF_CLKREMAP1, 2, DEF_UHSIF_DATA_BIT16);    // Divide 400M HSI by 2 to get 200M
+    UHSIF_GPIO_Init(DEF_UHSIF_SLAVE_FPGA_MODE, DEF_UHSIF_PINREMAP0, DEF_UHSIF_CLKREMAP1, 2, DEF_UHSIF_DATA_BIT16);    // Divide 400M HSI by 2 to get 200M
 
     /* Initialization of UHSIF-related registers */
     UHSIF_Cfg();
@@ -65,7 +65,7 @@ void UHSIF_Set_Para(uint8_t logic_bit, uint8_t logic_div)
     UHSIF_Para_Init();
 
     /* For the UHSIF pin initialization, the host needs to configure the frequency division coefficient */
-    UHSIF_GPIO_Init(DEF_UHSIF_SLAVE_FPGA_MODE, DEF_UHSIF_PINREMAP2, DEF_UHSIF_CLKREMAP1, logic_div, logic_set);    // Divide 400M HSI by 2 to get 200M
+    UHSIF_GPIO_Init(DEF_UHSIF_SLAVE_FPGA_MODE, DEF_UHSIF_PINREMAP0, DEF_UHSIF_CLKREMAP1, logic_div, logic_set);    // Divide 400M HSI by 2 to get 200M
 
     /* Initialization of UHSIF-related registers */
     UHSIF_Cfg();
